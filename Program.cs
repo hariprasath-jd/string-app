@@ -1,21 +1,13 @@
-﻿using System;
-using System.CommandLine;
+﻿using SO.AppStart;
 
-namespace App.StringOperation {
+namespace App.StringOperation
+{
     class MainProgram
     {
         public static void Main(string[] args)
         {
-            var printOption = new Option<string>(new string[] {"-p","--print"},"Print the given value.");
-
-            var c = new RootCommand();
-            c.AddOption(printOption);
-
-            c.SetHandler(pr => {
-                var output = pr.ParseResult.GetValueForOption(printOption);
-                Console.WriteLine($"{output}");
-            });
-            c.Invoke(args);
+            AppStart app = new(args);
+            app.StartApplication();
         }
     }
 }
